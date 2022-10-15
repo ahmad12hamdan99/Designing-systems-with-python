@@ -72,7 +72,9 @@ class DriveAPI:
         items = results.get('files', [])
 
 		# print a list of files
-
+        for i in items:
+            print(i['id'])
+        print('------------')
         print("Here's a list of files: \n")
         print(*items, sep="\n", end="\n\n")
 
