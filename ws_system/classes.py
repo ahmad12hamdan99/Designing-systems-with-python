@@ -1,14 +1,19 @@
 import datetime as dt
 import numpy as np
-
 #_______________System Class____________________
 class System:
     def __init__(self):
         self.users = {}
+        self.sessions = {}
+        
+    def add_user(self,user,timestamp):
+        date_time = dt.datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S')
+        self.users[user.id] = {}
+        self.users[user.id]['date'] = date_time.date()
+        
     
-    def add_user(self,user):
-        self.users['user.id'] = user
-    
+    def add_session(self,session):
+        self.sessions['session_id'] = session
    
 def mode(lst):
     d = {}
@@ -83,15 +88,16 @@ class Session:
         date_time = dt.datetime.strptime(timeStamp, '%Y-%m-%d %H:%M:%S')
         sTime = date_time.timetuple()
         current_time = sTime[3:6]
+        print(current_time)
         current_h = current_time[0]
         start_h = self.start_time[0]
-        diff_h_min = (current_h-start_h)*60
+        diff_h_min = abs((current_h-start_h))*60
         current_min = current_time[1]
         start_min = self.start_time[1]
-        diff_min = (current_min-start_min)
+        diff_min = abs(current_min-start_min)
         current_s = current_time[2]
         start_s = self.start_time[2]
-        diff_s_min = (current_s-start_s)/60
+        diff_s_min = abs(current_s-start_s)/60
         self.spent_time = diff_h_min + diff_min + diff_s_min
         if self.end_time_stamp==None:
             self.end_time_stamp = date_time
@@ -110,7 +116,10 @@ def singleton(class_):
 class Logger:
     def __init__(self):
         self.users_summaries = {}
-        
+    
+    # def update_users_summaries(self,sys):    
+    #     for user_id in sys.keys():
+            
     
     def update_users_summaries(self,user,isNew,stats_calculator):
         if isNew:
