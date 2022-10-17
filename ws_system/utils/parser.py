@@ -23,6 +23,7 @@ def print_user_summary_parser():
     print()
     #change that to work with class
     #call needed function from class
+    
     print()
     more = input('Find another user ? (yes/No)')
     if more.lower() == 'yes':
