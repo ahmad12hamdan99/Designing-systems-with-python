@@ -8,7 +8,7 @@ Design and implementation of a system for classrooms assignment in educational i
 
 #### Project Organization  
 ```
-├── task1                                  <- directory for source files 
+├── task1                                <- directory for source files 
 |    ├── main.py                         <- driver program file 
 |    ├── Innopolis University.pkl        <- task 1 implemented here 
 |    ├── Kazan Federal University.pkl    <- task 2 implemented here 
